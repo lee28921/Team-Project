@@ -29,7 +29,7 @@ public class TermsDAO extends DBHelper{
 				dto.setTerms(rs.getString(1));
 				dto.setPrivacy(rs.getString(2));
 			}
-			
+			close();
 		} catch(Exception e) {
 			logger.error("selectTerm() error : "+e.getMessage());
 		}
