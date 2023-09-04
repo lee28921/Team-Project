@@ -2,7 +2,7 @@
 <%@ include file="../_header.jsp" %>
 <div id="user">
 	<section class="login">
-        <form action="#" method="post">
+        <form action="/Farmstory2/user/login.do" method="post">
             <table border="0">
                 <tr>
                     <td><img src="/Farmstory2/images/login_ico_id.png" alt="아이디"></td>
