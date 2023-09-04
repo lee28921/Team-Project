@@ -15,7 +15,7 @@
             </tr>
             <tr>
                 <td></td>
-                <td><a href="#">제목</a>&nbsp;[12]</td>
+                <td><a href="/Farmstory2/board/view.do?group=${group}&cate=${cate}">제목</a>&nbsp;[12]</td>
                 <td>별명</td>
                 <td>2023-11-11</td>
                 <td>21</td>
@@ -33,7 +33,7 @@
    </div>
 
    <!-- 글쓰기 버튼 -->
-    <a href="/Jboard1/write.jsp" class="btnWrite">글쓰기</a>
+    <a href="/Farmstory2/board/write.do?group=${group}&cate=${cate}" class="btnWrite">글쓰기</a>
 </section>
           <!-- 내용 끝 -->
 
