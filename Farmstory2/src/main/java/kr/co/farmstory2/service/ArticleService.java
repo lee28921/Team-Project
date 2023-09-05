@@ -44,11 +44,17 @@ public enum ArticleService {
 	public void deleteArticle(int no) {
 		dao.deleteArticle(no);
 	}
+	
+	// 추가
 	public int selectCountTotal(String cate) {
 		return dao.selectCountTotal(cate);
 	}
-	
-	
+	public int insertComment(ArticleDTO dto) {
+		return dao.insertComment(dto);
+	}
+	public List<ArticleDTO> selectComments(String parent) {
+		return dao.selectComments(parent);
+	}
 	
 	/*
 	 *  파일 기능

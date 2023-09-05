@@ -36,11 +36,18 @@ public class SQL {
 										+ "`writer`=?, "
 										+ "`regip`=?, "
 										+ "`rdate`=NOW() ";
+	public static final String INSERT_COMMENT = "INSERT INTO `Article` SET "
+										+ "`parent`=?, "
+										+ "`content`=?, "
+										+ "`writer`=?, "
+										+ "`regip`=?, "
+										+ "`rdate`=NOW() ";
 	
 	public final static String SELECT_ARTICLE = "SELECT * FROM `Article` AS a "
 										+ "LEFT JOIN `File` AS b "
 										+ "ON a.`no` = b.`ano` "
 										+ "WHERE `no`=?";
+	
 	public final static String SELECT_MAX_NO = "SELECT MAX(`no`) FROM `Article`";
 	public final static String SELECT_COUNT_TOTAL = "SELECT COUNT(*) FROM `Article` WHERE `cate`=?";
 	
@@ -50,6 +57,12 @@ public class SQL {
 										+ "WHERE `parent`=0 AND `cate`=? "
 										+ "ORDER BY `no` DESC "
 										+ "LIMIT ?, 10";
+	public final static String SELECT_COMMENTS = "SELECT "
+										+ "a.*,"
+										+ "b.`nick` "
+										+ "FROM `Article` AS a "
+										+ "JOIN `User` AS b ON a.writer = b.uid "
+										+ "WHERE `parent`=?";
 	
 	// file
 	public static final String INSERT_FILE = "INSERT INTO `File` SET "

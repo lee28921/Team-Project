@@ -1,6 +1,7 @@
 package kr.co.farmstory2.controller.board;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -44,6 +45,10 @@ public class ViewController extends HttpServlet{
 		logger.debug("article fileCount : "+article.getFile());
 		
 		FileDTO fileDto = fService.selectFile(no);
+		
+		// 댓글 조회
+		List<ArticleDTO> comments = aService.selectComments(no);
+		req.setAttribute("comments", comments);
 		
 		req.setAttribute("group", group);
 		req.setAttribute("cate", cate);
