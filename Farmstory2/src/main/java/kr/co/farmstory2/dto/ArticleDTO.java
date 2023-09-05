@@ -16,6 +16,7 @@ public class ArticleDTO {
 	
 	// 추가
 	private String nick;
+	private FileDTO FileDto;
 	
 	public String getNick() {
 		return nick;
@@ -24,12 +25,22 @@ public class ArticleDTO {
 		this.nick = nick;
 	}
 	
+	public FileDTO getFileDto() {
+		return FileDto;
+	}
+	public void setFileDto(FileDTO fileDto) {
+		FileDto = fileDto;
+	}
+	
 	
 	public int getNo() {
 		return no;
 	}
 	public void setNo(int no) {
 		this.no = no;
+	}
+	public void setNo(String no) {
+		this.no = Integer.parseInt(no);
 	}
 	public int getParent() {
 		return parent;

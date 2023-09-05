@@ -37,6 +37,10 @@ public class SQL {
 										+ "`regip`=?, "
 										+ "`rdate`=NOW() ";
 	
+	public final static String SELECT_ARTICLE = "SELECT * FROM `Article` AS a "
+										+ "LEFT JOIN `File` AS b "
+										+ "ON a.`no` = b.`ano` "
+										+ "WHERE `no`=?";
 	public final static String SELECT_MAX_NO = "SELECT MAX(`no`) FROM `Article`";
 	public final static String SELECT_COUNT_TOTAL = "SELECT COUNT(*) FROM `Article` WHERE `cate`=?";
 	
@@ -53,5 +57,6 @@ public class SQL {
 										+ "`ofile`=?, "
 										+ "`sfile`=?, "
 										+ "`rdate`=NOW() ";
+	public final static String SELECT_FILE = "SELECT * FROM `File` WHERE `fno`=?";
 	
 }

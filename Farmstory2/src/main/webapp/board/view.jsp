@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../_header.jsp" %>
 <jsp:include page="./_aside${group}.jsp"/>
 <section class="view">
@@ -6,24 +7,27 @@
         <caption>글보기</caption>
         <tr>
             <th>제목</th>
-            <td><input type="text" name="title" value="제목입니다." readonly/></td>
+            <td><input type="text" name="title" value="${article.title}" readonly/></td>
         </tr>
+        <c:if test="${article.file > 0}">
         <tr>
             <th>파일</th>
-            <td><a href="#">2020년 상반기 매출자료.xls</a>&nbsp;<span>7</span>회 다운로드</td>
+            <td><a href="/Farmstory2/fileDownload.do?fno=${article.fileDto.fno}">${article.fileDto.ofile}</a>&nbsp;
+            <span>${article.fileDto.download}</span>회 다운로드</td>
         </tr>
+        </c:if>
         <tr>
             <th>내용</th>
             <td>
-                <textarea name="content" readonly>내용 샘플입니다.</textarea>
+                <textarea name="content" readonly>${article.content}</textarea>
             </td>
         </tr>                    
     </table>
     
     <div>
         <a href="#" class="btn btnRemove">삭제</a>
-        <a href="./modify.html" class="btn btnModify">수정</a>
-        <a href="./list.html" class="btn btnList">목록</a>
+        <a href="./modify.do" class="btn btnModify">수정</a>
+        <a href="./list.do" class="btn btnList">목록</a>
     </div>
 
     <!-- 댓글목록 -->
