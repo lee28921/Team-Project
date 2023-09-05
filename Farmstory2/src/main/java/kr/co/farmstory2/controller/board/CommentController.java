@@ -25,6 +25,33 @@ public class CommentController extends HttpServlet{
 	private ArticleService service = ArticleService.INSTANCE;
 	
 	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String kind = req.getParameter("kind");
+		String no = req.getParameter("no");
+
+		int result = 0;
+
+		switch(kind) {
+		case "REMOVE":
+
+			result = service.deleteComment(no);
+			break;
+		}
+
+
+		logger.debug("kind : "+kind);
+		logger.debug("result : "+result);
+
+		// Json 출력
+		JsonObject json = new JsonObject();
+		json.addProperty("result", result);
+		resp.getWriter().print(json);
+	
+	
+	}
+	
+	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String parent = req.getParameter("parent");

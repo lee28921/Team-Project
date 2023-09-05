@@ -64,6 +64,8 @@ public class SQL {
 										+ "JOIN `User` AS b ON a.writer = b.uid "
 										+ "WHERE `parent`=?";
 	
+	public final static String DELETE_COMMENT = "DELETE FROM `Article` WHERE `no`=?";
+	
 	// file
 	public static final String INSERT_FILE = "INSERT INTO `File` SET "
 										+ "`ano`=?, "
