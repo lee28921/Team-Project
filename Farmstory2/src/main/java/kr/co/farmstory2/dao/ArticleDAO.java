@@ -25,6 +25,8 @@ public class ArticleDAO extends DBHelper{
 		
 		try {
 			conn = getConnection();
+			conn.setAutoCommit(false); // Transaction 시작
+			
 			stmt = conn.createStatement();
 			psmt = conn.prepareStatement(SQL.INSERT_ARTICLE);
 			psmt.setString(1, dto.getCate());
@@ -36,6 +38,8 @@ public class ArticleDAO extends DBHelper{
 			
 			psmt.executeUpdate();
 			rs = stmt.executeQuery(SQL.SELECT_MAX_NO); // 해당 게시글의 글번호 조회
+			
+			conn.commit(); // 작업확정
 			
 			if(rs.next()) {
 				no = rs.getInt(1);
