@@ -38,6 +38,14 @@ public class SQL {
 										+ "`rdate`=NOW() ";
 	
 	public final static String SELECT_MAX_NO = "SELECT MAX(`no`) FROM `Article`";
+	public final static String SELECT_COUNT_TOTAL = "SELECT COUNT(*) FROM `Article` WHERE `cate`=?";
+	
+	public final static String SELECT_ARTICLES = "SELECT a.*, b.`nick` "
+										+ "FROM `Article` AS a "
+										+ "JOIN `User` AS b ON a.`writer` = b.`uid` "
+										+ "WHERE `parent`=0 AND `cate`=? "
+										+ "ORDER BY `no` DESC "
+										+ "LIMIT ?, 10";
 	
 	// file
 	public static final String INSERT_FILE = "INSERT INTO `File` SET "
