@@ -27,5 +27,23 @@ public class SQL {
 	public static final String SELECT_COUNT_EMAIL = "SELECT COUNT(*) FROM `User` WHERE `email`=?";
 	public static final String SELECT_COUNT_HP = "SELECT COUNT(*) FROM `User` WHERE `hp`=?";
 	
+	// article
+	public static final String INSERT_ARTICLE = "INSERT INTO `Article` SET "
+										+ "`cate`=?, "
+										+ "`title`=?, "
+										+ "`content`=?, "
+										+ "`file`=?, "
+										+ "`writer`=?, "
+										+ "`regip`=?, "
+										+ "`rdate`=NOW() ";
+	
+	public final static String SELECT_MAX_NO = "SELECT MAX(`no`) FROM `Article`";
+	
+	// file
+	public static final String INSERT_FILE = "INSERT INTO `File` SET "
+										+ "`ano`=?, "
+										+ "`ofile`=?, "
+										+ "`sfile`=?, "
+										+ "`rdate`=NOW() ";
 	
 }
