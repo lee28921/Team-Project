@@ -64,6 +64,37 @@ public class FileDAO extends DBHelper{
 	public List<FileDTO> selectFiles() {
 		return null;
 	}
-	public void updateFile(FileDTO dto) {}
-	public void deleteFile(String fno) {}
+	public void updateFile(FileDTO dto) {
+		logger.debug("DAO file : "+dto.toString());
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.UPDATE_FILE);
+			psmt.setString(1, dto.getOfile());
+			psmt.setString(2, dto.getSfile());
+			psmt.setInt(3, dto.getFno());
+			
+			psmt.executeUpdate();
+			
+			close();
+			
+		} catch(Exception e) {
+			logger.error("updateFile() error : "+e.getMessage());
+		}
+	}
+	public void deleteFile(String fno) {
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.DELETE_FILE);
+			psmt.setString(1, fno);
+			
+			psmt.executeUpdate();
+			
+			close();
+			
+		} catch(Exception e) {
+			logger.error("deleteFile() error : "+e.getMessage());
+		}
+		
+	}
 }

@@ -14,11 +14,17 @@ public class FileDTO {
 	public void setFno(int fno) {
 		this.fno = fno;
 	}
+	public void setFno(String fno) {
+		this.fno = Integer.parseInt(fno);
+	}
 	public int getAno() {
 		return ano;
 	}
 	public void setAno(int ano) {
 		this.ano = ano;
+	}
+	public void setAno(String ano) {
+		this.ano = Integer.parseInt(ano);
 	}
 	public String getOfile() {
 		return ofile;

@@ -115,7 +115,7 @@ public enum ArticleService {
 	}
 	
 	// 파일 다운로드
-public void downloadFile(HttpServletRequest req,HttpServletResponse resp, FileDTO dto) throws IOException {
+	public void downloadFile(HttpServletRequest req,HttpServletResponse resp, FileDTO dto) throws IOException {
 		
 		
 		// response 파일 다운로드 헤더 수정

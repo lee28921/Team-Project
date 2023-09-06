@@ -117,6 +117,12 @@ public class ArticleDTO {
 	public void setRdateFull(String rdate) {
 		this.rdate = rdate;
 	}
+	@Override
+	public String toString() {
+		return "ArticleDTO [no=" + no + ", parent=" + parent + ", comment=" + comment + ", cate=" + cate + ", title="
+				+ title + ", content=" + content + ", file=" + file + ", hit=" + hit + ", writer=" + writer + ", regip="
+				+ regip + ", rdate=" + rdate + ", nick=" + nick + ", FileDto=" + FileDto + "]";
+	}
 	
 	
 }

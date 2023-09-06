@@ -124,8 +124,10 @@
     </table>
     
     <div>
-        <a href="#" class="btn btnRemove">삭제</a>
-        <a href="./modify.do" class="btn btnModify">수정</a>
+    	<c:if test="${sessUser.uid eq article.writer}">
+	        <a href="#" class="btn btnDelete">삭제</a>
+	        <a href="/Farmstory2/board/modify.do?group=${group}&cate=${cate}&no=${article.no}" class="btn btnModify">수정</a>
+        </c:if>
         <a href="./list.do" class="btn btnList">목록</a>
     </div>
 
@@ -137,10 +139,12 @@
         <article>
             <span class="nick">${comment.nick}</span>
             <span class="date">${comment.rdate}</span>
-            <p class="content">${comment.content}</p>                        
+            <textarea class="content">${comment.content}</textarea>                        
             <div>
-                <a href="#" class="remove" data-no="${comment.no}">삭제</a>
-                <a href="#" class="modify">수정</a>
+            	<c:if test="${sessUser.uid eq comment.writer}">
+	                <a href="#" class="remove" data-no="${comment.no}">삭제</a>
+	                <a href="#" class="modify">수정</a>
+                </c:if>
             </div>
         </article>
 		</c:forEach>

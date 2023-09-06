@@ -64,14 +64,26 @@ public class SQL {
 										+ "JOIN `User` AS b ON a.writer = b.uid "
 										+ "WHERE `parent`=?";
 	
+	public final static String UPDATE_ARTICLE = "UPDATE `Article` SET "
+										+ "`title`=?, "
+										+ "`content`=?, "
+										+ "`file`=? "
+										+ "WHERE `no`=? ";
+	
 	public final static String DELETE_COMMENT = "DELETE FROM `Article` WHERE `no`=?";
 	
 	// file
 	public static final String INSERT_FILE = "INSERT INTO `File` SET "
 										+ "`ano`=?, "
 										+ "`ofile`=?, "
-										+ "`sfile`=?, "
+										+ "`sfile`=?,"
 										+ "`rdate`=NOW() ";
 	public final static String SELECT_FILE = "SELECT * FROM `File` WHERE `fno`=?";
 	
+	public final static String UPDATE_FILE = "UPDATE `File` SET "
+										+ "`ofile`=?, "
+										+ "`sfile`=? "
+										+ "WHERE `fno`=?";
+	
+	public final static String DELETE_FILE = "DELETE FROM `File` WHERE ``=? ";
 }
