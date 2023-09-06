@@ -23,7 +23,7 @@ public enum FileService {
 	public void updateFile(FileDTO dto) {
 		dao.updateFile(dto);
 	}
-	public void deleteFile(String fno) {
-		dao.deleteFile(fno);
+	public List<String> deleteFile(String ano) {
+		return dao.deleteFile(ano);
 	}
 }

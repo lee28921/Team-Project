@@ -88,14 +88,13 @@ public class ModifyController extends HttpServlet{
 		dto.setFile(oName);
 		dto.setWriter(writer);
 		
-		// 파일이 없는 게시글에서 파일 추가시
 		if(!ofile.isEmpty() && oName != null){
 				dto.setFile(1);
 		}
 		aService.updateArticle(dto);
 		
 		
-		// 게시글 제목, 내용만 수정시
+		// 파일이 없는 게시글에서 제목, 내용만 수정시
 		 if(ofile.isEmpty() && oName == null){
 		
 		

@@ -41,7 +41,7 @@ public enum ArticleService {
 	public void updateArticle(ArticleDTO dto) {
 		dao.updateArticle(dto);
 	}
-	public void deleteArticle(int no) {
+	public void deleteArticle(String no) {
 		dao.deleteArticle(no);
 	}
 	

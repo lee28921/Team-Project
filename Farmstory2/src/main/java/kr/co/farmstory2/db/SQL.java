@@ -70,6 +70,7 @@ public class SQL {
 										+ "`file`=? "
 										+ "WHERE `no`=? ";
 	
+	public final static String DELETE_ARTICLE = "DELETE FROM `Article` WHERE `no`=? OR `parent`=?";
 	public final static String DELETE_COMMENT = "DELETE FROM `Article` WHERE `no`=?";
 	
 	// file
@@ -85,5 +86,6 @@ public class SQL {
 										+ "`sfile`=? "
 										+ "WHERE `fno`=?";
 	
-	public final static String DELETE_FILE = "DELETE FROM `File` WHERE ``=? ";
+	public final static String DELETE_FILE = "DELETE FROM `File` WHERE `ano`=? ";
+	public final static String SELECT_FILE_SNAMES = "SELECT `sfile` FROM `File` WHERE `ano`=?";
 }

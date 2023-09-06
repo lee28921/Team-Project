@@ -125,10 +125,10 @@
     
     <div>
     	<c:if test="${sessUser.uid eq article.writer}">
-	        <a href="#" class="btn btnDelete">삭제</a>
+	        <a href="/Farmstory2/board/delete.do?group=${group}&cate=${cate}&no=${article.no}" class="btn btnDelete">삭제</a>
 	        <a href="/Farmstory2/board/modify.do?group=${group}&cate=${cate}&no=${article.no}" class="btn btnModify">수정</a>
         </c:if>
-        <a href="./list.do" class="btn btnList">목록</a>
+        <a href="/Farmstory2/board/list.do?group=${group}&cate=${cate}" class="btn btnList">목록</a>
     </div>
 
     <!-- 댓글목록 -->
