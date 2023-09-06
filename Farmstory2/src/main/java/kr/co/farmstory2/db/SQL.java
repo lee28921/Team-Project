@@ -70,6 +70,8 @@ public class SQL {
 										+ "`file`=? "
 										+ "WHERE `no`=? ";
 	
+	public final static String UPDATE_COMMENT = "UPDATE `Article` SET `content`=? WHERE `no`=?";
+	
 	public final static String DELETE_ARTICLE = "DELETE FROM `Article` WHERE `no`=? OR `parent`=?";
 	public final static String DELETE_COMMENT = "DELETE FROM `Article` WHERE `no`=?";
 	

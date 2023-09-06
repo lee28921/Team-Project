@@ -5,6 +5,11 @@
 	
 	$(function(){
 		
+		
+		const commentURL = "/Farmstory2/board/comment.do";	
+		const formComment = document.getElementById('formComment');
+		const commentList = document.getElementsByClassName('commentList')[0];
+		
 		// 댓글 삭제
 		$(document).on('click','.remove',function(e){
 			e.preventDefault();
@@ -17,12 +22,12 @@
 			console.log('no : '+no);
 			
 			const jsonData = {
-					"kind":"REMOVE",
+					"type":"REMOVE",
 					"no":no
 			}
 			
 			$.ajax({
-				url: '/Farmstory2/comment.do',
+				url: commentURL,
 				type: 'GET',
 				data: jsonData,
 				dataType: 'json',
@@ -59,7 +64,7 @@
 			console.log('jsonData : '+jsonData);
 			
 			$.ajax({
-				url: '/Farmstory2/comment.do',
+				url: commentURL,
 				type: 'post',
 				data: jsonData,
 				dataType: 'json',
@@ -95,6 +100,95 @@
 			
 		};
 		
+		// 댓글 수정
+		
+		document.addEventListener('click', async function(e){
+			
+			const article  = e.target.parentNode.closest('article');
+			const textarea = article.getElementsByTagName('textarea')[0];
+			const remove   = article.getElementsByClassName('remove')[0];
+			const cancel   = article.getElementsByClassName('cancel')[0];
+			const modify   = article.getElementsByClassName('modify')[0];
+			
+			// 수정&수정완료
+			if(e.target && e.target.classList.value == 'modify'){
+				e.preventDefault();
+				
+				const txt = e.target.innerText;
+				
+				if(txt == '수정'){
+					// 수정모드
+					const value = textarea.value;
+					textarea.style.border = '1px solid #e4eaec';
+					textarea.style.background = '#fff';
+					textarea.readOnly = false;
+					textarea.focus();
+					
+					remove.style.display = 'none';
+					cancel.style.display = 'inline';
+					modify.innerText = '수정완료';
+					
+				}else if(txt == '수정완료'){
+					
+					if(!confirm('정말 수정 하시겠습니까?')){
+						return;
+					}
+										
+					const no = e.target.dataset['no'];
+					const content = textarea.value;
+					
+					const params = new URLSearchParams({
+						'type': 'MODIFY',
+						'no': no,
+						'content': content
+					});
+					
+					// 데이터 서버 전송
+					const response = await fetch(commentURL+"?"+params, {
+						method: 'GET'
+					});
+								
+					// 서버 응답 데이터 수신
+					const data = await response.json();
+					console.log('data : ' + JSON.stringify(data));
+					
+					if(data.result > 0){
+						alert('수정완료 했습니다.');
+						
+						// 수정모드 해제
+						textarea.style.border = 'none';
+						textarea.style.background = 'none';
+						textarea.readOnly = true;
+						
+						remove.style.display = 'inline';
+						cancel.style.display = 'none';
+						modify.innerText = '수정';
+						
+					}else{
+						alert('수정실패 했습니다.');
+					}
+				}
+			}
+			
+			// 수정취소
+			if(e.target && e.target.classList.value == 'cancel'){
+				e.preventDefault();
+
+				const value = textarea.dataset['value'];
+				console.log('value : ' + value);
+				
+				// 수정모드 해제
+				textarea.style.border = 'none';
+				textarea.style.background = 'none';
+				textarea.readOnly = true;
+				textarea.value = value;
+				
+				remove.style.display = 'inline';
+				cancel.style.display = 'none';
+				modify.innerText = '수정';
+			}
+			
+		});
 		
 		
 	});
@@ -137,15 +231,18 @@
 		
 		<c:forEach var="comment" items="${comments}">
         <article>
-            <span class="nick">${comment.nick}</span>
-            <span class="date">${comment.rdate}</span>
-            <textarea class="content">${comment.content}</textarea>                        
-            <div>
-            	<c:if test="${sessUser.uid eq comment.writer}">
-	                <a href="#" class="remove" data-no="${comment.no}">삭제</a>
-	                <a href="#" class="modify">수정</a>
-                </c:if>
-            </div>
+        	<form action="#" method="post">
+	            <span class="nick">${comment.nick}</span>
+	            <span class="date">${comment.rdate}</span>
+	            <textarea class="content">${comment.content}</textarea>                        
+	            <div>
+	            	<c:if test="${sessUser.uid eq comment.writer}">
+		                <a href="#" class="remove" data-no="${comment.no}">삭제</a>
+		                <a href="#" class="cancel" data-no="${comment.no}">취소</a>
+		                <a href="#" class="modify" data-no="${comment.no}">수정</a>
+	                </c:if>
+	            </div>
+            </form>
         </article>
 		</c:forEach>
 		<c:if test="${empty comments}">

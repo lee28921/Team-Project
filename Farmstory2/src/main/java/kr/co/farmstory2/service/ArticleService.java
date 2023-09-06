@@ -55,6 +55,9 @@ public enum ArticleService {
 	public List<ArticleDTO> selectComments(String parent) {
 		return dao.selectComments(parent);
 	}
+	public int updateComment(String no, String content) {
+		return dao.updateComment(no, content);
+	}
 	public int deleteComment(String no) {
 		return dao.deleteComment(no);
 	}

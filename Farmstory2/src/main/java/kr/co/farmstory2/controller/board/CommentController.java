@@ -16,7 +16,7 @@ import com.google.gson.JsonObject;
 import kr.co.farmstory2.dto.ArticleDTO;
 import kr.co.farmstory2.service.ArticleService;
 
-@WebServlet("/comment.do")
+@WebServlet("/board/comment.do")
 public class CommentController extends HttpServlet{
 
 	private static final long serialVersionUID = 3096232538471515350L;
@@ -27,20 +27,25 @@ public class CommentController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String kind = req.getParameter("kind");
+		String type = req.getParameter("type");
 		String no = req.getParameter("no");
+		String content = req.getParameter("content");
 
 		int result = 0;
 
-		switch(kind) {
-		case "REMOVE":
-
-			result = service.deleteComment(no);
-			break;
+		switch(type) {
+			case "REMOVE":
+	
+				result = service.deleteComment(no);
+				break;
+			case "MODIFY":
+				
+				result = service.updateComment(no, content);
+				break;
 		}
 
 
-		logger.debug("kind : "+kind);
+		logger.debug("type : "+type);
 		logger.debug("result : "+result);
 
 		// Json 출력
