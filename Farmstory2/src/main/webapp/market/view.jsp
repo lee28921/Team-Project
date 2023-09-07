@@ -105,7 +105,7 @@
                         <td class="total">${product.price}원</td>
                     </tr>
                     <!-- 제품 데이터 전송 -->
-					<form action="${ctxPath}/market/order.do" method="post">
+					<form id="formOrder" action="${ctxPath}/market/order.do" method="post">
 						<input type="hidden" name="thumb2"   value="${product.thumb2}">
 	                	<input type="hidden" name="pName"    value="${product.pName}">
 	                	<input type="hidden" name="pNo"      value="${product.pNo}">

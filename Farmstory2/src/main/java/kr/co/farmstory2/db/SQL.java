@@ -112,4 +112,21 @@ public class SQL {
 	
 	public final static String SELECT_COUNT_RPODUCT_ALL = "SELECT COUNT(*) FROM `Product` WHERE `stock` > 0";
 	public final static String SELECT_COUNT_RPODUCT_TYPE = "SELECT COUNT(*) FROM `Product` WHERE `stock` > 0 AND `type`=?";
+	
+	// Order
+	public final static String INSERT_ORDER = "INSERT INTO `Order` SET "
+											+ "`orderProduct`=?, "
+											+ "`orderCount`=?, "
+											+ "`orderDelivery`=?, "
+											+ "`orderPrice`=?, "
+											+ "`orderTotal`=?, "
+											+ "`receiver`=?, "
+											+ "`hp`=?, "
+											+ "`zip`=?, "
+											+ "`addr1`=?, "
+											+ "`addr2`=?, "
+											+ "`orderEtc`=?, "
+											+ "`orderUser`=?, "
+											+ "`orderDate`=NOW() ";
+	
 }
