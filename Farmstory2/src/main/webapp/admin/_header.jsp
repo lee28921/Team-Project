@@ -16,8 +16,8 @@
         <header>
             <a href="./index.do" class="logo"><img src="./images/admin_logo.jpg" alt="로고"/></a>
             <p>
-                <a href="/">HOME |</a>
-                <a href="#">로그아웃 |</a>
+                <a href="/Farmstory2/">HOME |</a>
+                <a href="/Farmstory2/user/logout.do">로그아웃 |</a>
                 <a href="#">고객센터</a>
             </p>
         </header>
