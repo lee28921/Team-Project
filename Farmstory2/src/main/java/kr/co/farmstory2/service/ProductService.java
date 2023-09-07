@@ -30,6 +30,9 @@ public enum ProductService {
 	public List<ProductDTO> selectProducts(int start) {
 		return dao.selectProducts(start);
 	}
+	public List<ProductDTO> selectProducts(int start, String type) { // 타입마다
+		return dao.selectProducts(start, type);
+	}
 	public void updateProduct(ProductDTO dto) {
 		dao.updateProduct(dto);
 	}
@@ -38,8 +41,11 @@ public enum ProductService {
 	}
 	
 	// 추가
-	public int selectCountProductTotal() {
+	public int selectCountProductsTotal() {
 		return dao.selectCountProductTotal();
+	}
+	public int selectCountProductTotal(String type) { // 타입마다
+		return dao.selectCountProductTotal(type);
 	}
 	
 	/*

@@ -31,13 +31,21 @@ public class ListController extends HttpServlet{
 		
 		// 데이터 수신
 		String pg = req.getParameter("pg");
+		String type = req.getParameter("type");
 		
+		logger.debug("type : " + type);
+		logger.debug("pg : " + pg);
+		
+		// 전체보기
+		if(type == null) {
+			type = "0";
+		}
 		
 		// 페이지 번호
 		int currentPage = aService.getCurrentPage(pg);
 		
 		// 게시글 갯수
-		int total = pService.selectCountProductTotal();
+		int total = pService.selectCountProductTotal(type);
 		
 		// 마지막 페이지
 		int lastPageNum = aService.getLastPageNum(total);
@@ -50,18 +58,22 @@ public class ListController extends HttpServlet{
 		
 		// Limit 시작번호
 		int start = aService.getStartNum(currentPage);
-		
-		
-		// 상품 조회
-		List<ProductDTO> products = pService.selectProducts(start);
-		req.setAttribute("products", products);
+		logger.debug("start : "+start);
 		
 		// 페이지 그룹화
 		req.setAttribute("currentPage", currentPage);
+		req.setAttribute("total", total);
 		req.setAttribute("lastPageNum", lastPageNum);
 		req.setAttribute("pageGroupStart", result[0]);
 		req.setAttribute("pageGroupEnd", result[1]);
 		req.setAttribute("pageStartNum", pageStartNum+1);
+		
+		// 상품 조회
+		List<ProductDTO> products = pService.selectProducts(start,type);
+		req.setAttribute("products", products);
+		req.setAttribute("type", type);
+		
+		logger.debug(products.toString());
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/market/list.jsp");
 		dispatcher.forward(req, resp);
