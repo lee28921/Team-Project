@@ -104,4 +104,6 @@ public class SQL {
 													+ "`seller`=?, "
 													+ "`etc`=?, "
 													+ "`rdate`=NOW() ";
+	public final static String SELECT_PRODUCTS = "SELECT * FROM `Product` WHERE `stock` > 0 LIMIT ?, 10";
+	public final static String SELECT_COUNT_RPODUCT = "SELECT COUNT(*) FROM `Product` WHERE `stock` > 0";
 }

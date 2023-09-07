@@ -27,8 +27,8 @@ public enum ProductService {
 	public ProductDTO selectProduct(int pNo) {
 		return dao.selectProduct(pNo);
 	}
-	public List<ProductDTO> selectProducts() {
-		return dao.selectProducts();
+	public List<ProductDTO> selectProducts(int start) {
+		return dao.selectProducts(start);
 	}
 	public void updateProduct(ProductDTO dto) {
 		dao.updateProduct(dto);
@@ -38,6 +38,13 @@ public enum ProductService {
 	}
 	
 	// 추가
+	public int selectCountProductTotal() {
+		return dao.selectCountProductTotal();
+	}
+	
+	/*
+	 * 파일
+	 */
 	
 	// 파일 경로
 	public String getThumbPath(HttpServletRequest req) {

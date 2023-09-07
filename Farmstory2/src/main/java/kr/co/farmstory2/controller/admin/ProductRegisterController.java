@@ -24,7 +24,6 @@ public class ProductRegisterController extends HttpServlet{
 	private static final long serialVersionUID = 4988836274699503222L;
 	
 	Logger logger = LoggerFactory.getLogger(this.getClass());
-	private ArticleService aService = ArticleService.INSTANCE;
 	private ProductService pService = ProductService.INSTANCE;
 	
 	@Override
@@ -60,9 +59,9 @@ public class ProductRegisterController extends HttpServlet{
 		dto.setPrice(price);
 		dto.setDelivery(delivery);
 		dto.setStock(stock);
-		dto.setThumb1(thumb1);
-		dto.setThumb2(thumb2);
-		dto.setThumb3(thumb3);
+		dto.setThumb1ForRename(thumb1);
+		dto.setThumb2ForRename(thumb2);
+		dto.setThumb3ForRename(thumb3);
 		dto.setSeller(seller);
 		dto.setEtc(etc);
 		

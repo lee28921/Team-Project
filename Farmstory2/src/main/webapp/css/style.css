@@ -467,6 +467,10 @@ main > .info > div > .account {
     font-weight: bold;            
 }
 
+#sub > .market > .list > table .thumb {
+	width: 120px;
+	height: 120px;
+}
 #sub > .market > .list > .paging {
     margin: 20px 0;
     text-align: center;
