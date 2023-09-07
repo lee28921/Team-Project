@@ -46,8 +46,36 @@ public class ProductDAO extends DBHelper{
 		}
 	}
 	
-	public ProductDTO selectProduct(int pNo) {
-		return null;
+	public ProductDTO selectProduct(String pNo) {
+		ProductDTO dto = null;
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_PRODUCT);
+			psmt.setString(1, pNo);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				dto = new ProductDTO();
+				dto.setpNo(rs.getInt(1));
+				dto.setType(rs.getInt(2));
+				dto.setpName(rs.getString(3));
+				dto.setPrice(rs.getInt(4));
+				dto.setDelivery(rs.getInt(5));
+				dto.setStock(rs.getInt(6));
+				dto.setSold(rs.getInt(7));
+				dto.setThumb1(rs.getString(8));
+				dto.setThumb2(rs.getString(9));
+				dto.setThumb3(rs.getString(10));
+				dto.setSeller(rs.getString(11));
+				dto.setEtc(rs.getString(12));
+				dto.setRdate(rs.getString(13));
+			}
+			close();
+		} catch(Exception e) {
+			logger.error("selectProduct() error : "+e.getMessage());
+		}
+		
+		return dto;
 	}
 	public List<ProductDTO> selectProducts(int start) {
 		

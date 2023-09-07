@@ -46,6 +46,7 @@ public class ListController extends HttpServlet{
 		
 		// 게시글 갯수
 		int total = pService.selectCountProductTotal(type);
+		logger.debug("total : "+total);
 		
 		// 마지막 페이지
 		int lastPageNum = aService.getLastPageNum(total);
