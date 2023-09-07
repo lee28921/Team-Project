@@ -1,5 +1,7 @@
 package kr.co.farmstory2.dao;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,4 +44,13 @@ public class ProductDAO extends DBHelper{
 			logger.error("insertProduct() error : "+e.getMessage());
 		}
 	}
+	
+	public ProductDTO selectProduct(int pNo) {
+		return null;
+	}
+	public List<ProductDTO> selectProducts() {
+		return null;
+	}
+	public void updateProduct(ProductDTO dto) {}
+	public void deleteProduct(int pNo) {}
 }
