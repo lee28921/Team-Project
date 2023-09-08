@@ -61,6 +61,9 @@ public enum ArticleService {
 	public int deleteComment(String no) {
 		return dao.deleteComment(no);
 	}
+	public List<ArticleDTO> selectLatests(String cate, int size) {
+		return dao.selectLatests(cate, size);
+	}
 	
 	/*
 	 *  파일 기능

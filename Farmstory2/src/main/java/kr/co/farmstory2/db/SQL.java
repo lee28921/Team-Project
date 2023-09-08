@@ -75,6 +75,11 @@ public class SQL {
 	public final static String DELETE_ARTICLE = "DELETE FROM `Article` WHERE `no`=? OR `parent`=?";
 	public final static String DELETE_COMMENT = "DELETE FROM `Article` WHERE `no`=?";
 	
+	public final static String SELECT_LATESTS = "SELECT `no`,`title`,`rdate` FROM `Article`"
+										+ "WHERE `cate`=? AND `parent`=0 "
+										+ "ORDER BY `no` DESC "
+										+ "LIMIT ?";
+	
 	// file
 	public static final String INSERT_FILE = "INSERT INTO `File` SET "
 										+ "`ano`=?, "

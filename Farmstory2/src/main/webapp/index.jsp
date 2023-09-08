@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="./_header.jsp" %>
 <main>
     <div class="slider">
@@ -8,12 +9,12 @@
             <li><img src="./images/main_slide_img3.jpg" alt="슬라이더3"></li>
         </ul>
 
-        <img src="./images/main_slide_img_tit.png" alt="사람과 자연을 사랑하는 팜스토리"/>
+        <img src="${ctxPath}/images/main_slide_img_tit.png" alt="사람과 자연을 사랑하는 팜스토리"/>
 
         <div class="banner">
-            <img src="./images/main_banner_txt.png" alt="GRAND OPEN"/>
-            <img src="./images/main_banner_tit.png" alt="팜스토리 오픈기념 30% 할인 이벤트"/>
-            <img src="./images/main_banner_img.png" alt="과일"/>
+            <img src="${ctxPath}/images/main_banner_txt.png" alt="GRAND OPEN"/>
+            <img src="${ctxPath}/images/main_banner_tit.png" alt="팜스토리 오픈기념 30% 할인 이벤트"/>
+            <img src="${ctxPath}/images/main_banner_img.png" alt="과일"/>
         </div>
     </div>
 
@@ -27,93 +28,39 @@
             <a href="#"><img src="./images/main_latest1_tit.png" alt="텃밭 가꾸기"/></a>
             <img src="./images/main_latest1_img.jpg" alt="이미지"/>
             <table border="0">
+            	<c:forEach var="latest" items="${latests1}">
                 <tr>
                     <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
+                    <td><a href="${ctxPath}/board/view.do?group=Croptalk&cate=story&no=${latest.no}">${latest.title}</a></td>
+                    <td>${latest.rdate}</td>
                 </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
+                </c:forEach>
             </table>
         </div>
         <div>
             <a href="#"><img src="./images/main_latest2_tit.png" alt="귀농학교"/></a>
             <img src="./images/main_latest2_img.jpg" alt="이미지"/>
             <table border="0">
+            	<c:forEach var="latest" items="${latests2}">
                 <tr>
                     <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
+                    <td><a href="${ctxPath}/board/view.do?group=Croptalk&cate=grow&no=${latest.no}">${latest.title}</a></td>
+                    <td>${latest.rdate}</td>
                 </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
+                </c:forEach>
             </table>
         </div>
         <div>
             <a href="#"><img src="./images/main_latest3_tit.png" alt="농작물 이야기"/></a>
             <img src="./images/main_latest3_img.jpg" alt="이미지"/>
             <table border="0">
+            	<c:forEach var="latest" items="${latests3}">
                 <tr>
                     <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
+                    <td><a href="${ctxPath}/board/view.do?group=Croptalk&cate=school&no=${latest.no}">${latest.title}</a></td>
+                    <td>${latest.rdate}</td>
                 </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
+                </c:forEach>
             </table>
         </div>
         
@@ -156,23 +103,23 @@
                 </ul>
                 <div id="tabs-1">
                     <ul class="txt">
-                        <li><a href="#">· 홈페이지 오픈 기념 이벤트를 진행합니다.</a></li>
-                        <li><a href="#">· 홈페이지 오픈 기념 이벤트를 진행합니다.</a></li>
-                        <li><a href="#">· 홈페이지 오픈 기념 이벤트를 진행합니다.</a></li>
+                    	<c:forEach var="tabLatest" items="${tabLatests1}">
+                        <li><a href="${ctxPath}/board/view.do?group=Community&cate=notice&no=${tabLatest.no}">${tabLatest.title}</a></li>
+                        </c:forEach>
                     </ul>
                 </div>
                 <div id="tabs-2">
                     <ul class="txt">
-                        <li><a href="#">· 홈페이지 이용 관련 불편사항을 들려주세요.</a></li>
-                        <li><a href="#">· 홈페이지 이용 관련 불편사항을 들려주세요.</a></li>
-                        <li><a href="#">· 홈페이지 이용 관련 불편사항을 들려주세요.</a></li>
+                    	<c:forEach var="tabLatest" items="${tabLatests2}">
+                        <li><a href="${ctxPath}/board/view.do?group=Community&cate=qna&no=${tabLatest.no}">${tabLatest.title}</a></li>
+                        </c:forEach>
                     </ul>
                 </div>
                 <div id="tabs-3">
                     <ul class="txt">
-                        <li><a href="#">· 홈페이지를 오픈하였습니다.</a></li>
-                        <li><a href="#">· 홈페이지를 오픈하였습니다.</a></li>
-                        <li><a href="#">· 홈페이지를 오픈하였습니다.</a></li>
+                    	<c:forEach var="tabLatest" items="${tabLatests3}">
+                        <li><a href="${ctxPath}/board/view.do?group=Community&cate=faq&no=${tabLatest.no}">${tabLatest.title}</a></li>
+						</c:forEach>
                     </ul>
                 </div>
             </div>
