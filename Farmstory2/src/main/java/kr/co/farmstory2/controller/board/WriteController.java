@@ -33,23 +33,16 @@ public class WriteController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		HttpSession session = req.getSession();
-		UserDTO sessUser = (UserDTO) session.getAttribute("sessUser");
-		
 		String group = req.getParameter("group");
 		String cate = req.getParameter("cate");
 		
+			
+		req.setAttribute("group", group);
+		req.setAttribute("cate", cate);
 		
-		if(sessUser != null) {
-			
-			req.setAttribute("group", group);
-			req.setAttribute("cate", cate);
-			
-			RequestDispatcher dispatcher = req.getRequestDispatcher("/board/write.jsp");
-			dispatcher.forward(req, resp);
-		} else {
-			resp.sendRedirect("/Farmstory2/user/login.do?success=101");
-		}
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/board/write.jsp");
+		dispatcher.forward(req, resp);
+		resp.sendRedirect("/Farmstory2/user/login.do?success=101");
 		
 	}
 	
