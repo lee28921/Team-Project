@@ -242,6 +242,29 @@ public class ArticleDAO extends DBHelper{
 		}
 		return comments;
 	}
+	public int updateCountComment(String no) {
+		logger.info("updateCountComment...1");
+		
+		int result = 0;
+		try {
+			conn = getConnection();
+			conn.getAutoCommit();
+			psmt = conn.prepareStatement(SQL.UPDATE_COUNT_COMMENT);
+			psmt.setString(1, no);
+			psmt.setString(2, no);
+			result = psmt.executeUpdate();
+			
+			// 로그 추가
+	        logger.info("updateCountComment executed successfully");
+			
+			close();
+		} catch(Exception e) {
+			logger.error("updateCountComment() error : "+e.getMessage());
+			logger.trace("updateCountComment() trance : "+e.getMessage());
+		}
+		
+		return result;
+	}
 	public int updateComment(String no, String content) {
 		int result = 0;
 		try {

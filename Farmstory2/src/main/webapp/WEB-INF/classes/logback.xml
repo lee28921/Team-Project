@@ -42,7 +42,7 @@
 	</appender>
 	
 	
-	<root level="debug"> <!-- 배포시 STDOUT는 주석처리 -->
+	<root level="trace"> <!-- 배포시 STDOUT는 주석처리 -->
 		<appender-ref ref="STDOUT" />
 	</root>
 

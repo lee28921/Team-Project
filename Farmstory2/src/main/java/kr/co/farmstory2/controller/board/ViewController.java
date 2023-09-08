@@ -50,10 +50,18 @@ public class ViewController extends HttpServlet{
 		List<ArticleDTO> comments = aService.selectComments(no);
 		req.setAttribute("comments", comments);
 		
+	
+		
 		req.setAttribute("group", group);
 		req.setAttribute("cate", cate);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/board/view.jsp");
 		dispatcher.forward(req, resp);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String no = req.getParameter("no");
+		aService.updateCountComment(no);
 	}
 }

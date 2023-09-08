@@ -55,6 +55,10 @@ public enum ArticleService {
 	public List<ArticleDTO> selectComments(String parent) {
 		return dao.selectComments(parent);
 	}
+	public int updateCountComment(String no) {
+		logger.info("updateCountComment service...1");
+		return dao.updateCountComment(no);
+	}
 	public int updateComment(String no, String content) {
 		return dao.updateComment(no, content);
 	}

@@ -30,8 +30,10 @@
 				url: commentURL,
 				type: 'GET',
 				data: jsonData,
+				async : true,
 				dataType: 'json',
 				success : function(data){
+					console.log('result2 : '+data.result2);
 					
 					if(data.result > 0){
 						alert('댓글이 삭제 되었습니다.');
@@ -71,7 +73,7 @@
 				success: function(data){
 					
 					if(data.result > 0) {
-					
+						console.log('result1 : '+data.result2);
 						// 동적 화면 생성
 						const dt = new Date();
 						const year = dt.getFullYear().toString().substr(2,4);
@@ -82,7 +84,7 @@
 						const article = `<article>
 											<span class="nick">${sessUser.nick}</span>
 											<span class="date">`+ now +`</span>
-											<p class="content">`+content+`</p>
+											<textarea class="content">`+content+`</textarea>
 											<div>
 												<a href="#" class="remove">삭제</a>
 												<a href="#" class="modify">수정</a>
@@ -190,7 +192,6 @@
 			
 		});
 		
-		
 	});
 
 </script>
@@ -234,10 +235,10 @@
         	<form action="#" method="post">
 	            <span class="nick">${comment.nick}</span>
 	            <span class="date">${comment.rdate}</span>
-	            <textarea class="content">${comment.content}</textarea>                        
+	            <textarea class="content" readonly>${comment.content}</textarea>                        
 	            <div>
 	            	<c:if test="${sessUser.uid eq comment.writer}">
-		                <a href="#" class="remove" data-no="${comment.no}">삭제</a>
+		                <a href="#" id="btnRemove" class="remove" data-no="${comment.no}">삭제</a>
 		                <a href="#" class="cancel" data-no="${comment.no}">취소</a>
 		                <a href="#" class="modify" data-no="${comment.no}">수정</a>
 	                </c:if>

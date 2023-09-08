@@ -1,6 +1,7 @@
 package kr.co.farmstory2.controller.board;
 
 import java.io.IOException;
+import java.sql.Connection;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,25 +33,29 @@ public class CommentController extends HttpServlet{
 		String content = req.getParameter("content");
 
 		int result = 0;
-
+		int result2 = 0;
+		
 		switch(type) {
 			case "REMOVE":
-	
+				
 				result = service.deleteComment(no);
+				result2 = service.updateCountComment(no);
+				
 				break;
 			case "MODIFY":
 				
 				result = service.updateComment(no, content);
 				break;
 		}
-
-
+		
 		logger.debug("type : "+type);
 		logger.debug("result : "+result);
+		logger.debug("result2 : "+result2);
 
 		// Json 출력
 		JsonObject json = new JsonObject();
 		json.addProperty("result", result);
+		json.addProperty("result2", result2);
 		resp.getWriter().print(json);
 	
 	
@@ -76,11 +81,15 @@ public class CommentController extends HttpServlet{
 		dto.setWriter(writer);
 		dto.setRegip(regip);
 		
+		// 댓글 갯수
+		
 		int result = service.insertComment(dto);
+		int result2 = service.updateCountComment(parent);
 		
 		// Json 출력 (AJAX 요청)
 		JsonObject json = new JsonObject();
 		json.addProperty("result", result);
+		json.addProperty("result2", result2);
 		resp.getWriter().print(json);
 	}
 }
